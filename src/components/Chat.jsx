@@ -11,7 +11,7 @@ import {
 } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { db, auth } from "../config/firebase";
-import { model, initializeModel } from "../config/gemini";
+import { initializeModel } from "../config/gemini";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
@@ -176,7 +176,7 @@ Just let me know what you're working on, and I'll do my best to help!`,
               {children}
             </blockquote>
           ),
-          code({ node, inline, className, children, ...props }) {
+          code({ inline, className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || "");
             return !inline && match ? (
               <div className="rounded-lg overflow-hidden my-3">

@@ -19,7 +19,7 @@ function ApiKeyPrompt() {
       localStorage.setItem("gemini_api_key", apiKey);
       setIsModalVisible(false);
       navigate("/chat");
-    } catch (err) {
+    } catch {
       setError("Failed to save API key. Please try again.");
     } finally {
       setIsSubmitting(false);
@@ -87,7 +87,7 @@ function ApiKeyPrompt() {
 
                   <div className="text-sm text-gray-500 dark:text-gray-400">
                     <p>
-                      Don't have an API key?{" "}
+                      Don&apos;t have an API key?{" "}
                       <a
                         href="https://makersuite.google.com/app/apikey"
                         target="_blank"

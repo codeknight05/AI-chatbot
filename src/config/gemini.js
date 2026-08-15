@@ -9,7 +9,7 @@ export const initializeModel = () => {
   if (!apiKey) return null;
 
   const genAI = new GoogleGenerativeAI(apiKey);
-  return genAI.getGenerativeModel({ model: "gemini-pro" });
+  return genAI.getGenerativeModel({ model: "gemini-3.6-flash" });
 };
 
 export const model = initializeModel();

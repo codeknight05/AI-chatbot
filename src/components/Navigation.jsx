@@ -4,6 +4,17 @@ import { auth } from "../config/firebase";
 import { logoutUser } from "../utils/auth";
 import { useState, useEffect, useRef } from "react";
 
+const NavLink = ({ to, children }) => (
+  <Link
+    to={to}
+    className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 px-4 py-2 rounded-lg
+               transition-colors duration-200 font-medium text-sm
+               hover:bg-blue-50 dark:hover:bg-gray-800"
+  >
+    {children}
+  </Link>
+);
+
 function Navigation() {
   const [user] = useAuthState(auth);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,17 +30,6 @@ function Navigation() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-
-  const NavLink = ({ to, children }) => (
-    <Link
-      to={to}
-      className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 px-4 py-2 rounded-lg
-                 transition-colors duration-200 font-medium text-sm
-                 hover:bg-blue-50 dark:hover:bg-gray-800"
-    >
-      {children}
-    </Link>
-  );
 
   return (
     <nav className="bg-gradient-to-r from-indigo-900/80 via-purple-900/80 to-pink-900/80 backdrop-blur-lg border-b border-gray-700/50 sticky top-0 z-50">

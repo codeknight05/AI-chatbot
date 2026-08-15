@@ -5,7 +5,7 @@ import {
   setPersistence,
   browserLocalPersistence,
 } from "firebase/auth";
-import { getMessaging } from "firebase/messaging";
+import { getMessaging, isSupported } from "firebase/messaging";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAoOWMl-mopoWc_GLYseGamZpm_EtrBDDM",
@@ -19,7 +19,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
-export const messaging = getMessaging(app);
+export const messaging = isSupported()
+  .then((supported) => (supported ? getMessaging(app) : null))
+  .catch(() => null);
 
 // Set persistence correctly using imported functions
 setPersistence(auth, browserLocalPersistence).catch((error) => {

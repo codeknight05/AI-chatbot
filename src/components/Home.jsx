@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { FaRobot, FaCode, FaLock, FaGithub, FaLightbulb, FaBrain } from "react-icons/fa";
+import { FaRobot, FaLock, FaGithub, FaLightbulb, FaBrain } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 function Landing() {
@@ -71,7 +71,7 @@ function Landing() {
             >
               <FaRobot className="text-xl" />
               Start Coding Now
-              <span className="inline-block animate-bounce">→</span>
+              <span className="inline-block animate-bounce">-&gt;</span>
             </button>
             <a
               href="https://github.com"
@@ -123,7 +123,7 @@ function Landing() {
           <StatCard number="100+" label="Programming Languages" />
           <StatCard number="24/7" label="AI Availability" />
           <StatCard number="1M+" label="Developers" />
-          <StatCard number="5⭐" label="Average Rating" />
+          <StatCard number="5-star" label="Average Rating" />
         </motion.div>
       </div>
     </div>

@@ -1,8 +1,36 @@
-# React + Vite
+# AI Powered Chat Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite chat app with Firebase authentication/storage and a user-provided Gemini API key.
 
-Currently, two official plugins are available:
+## Local development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build
+```
+
+The production files are generated in `dist`.
+
+## Deploy
+
+This is a static Vite app, so it can deploy to Vercel, Netlify, Firebase Hosting, or any static host.
+
+Recommended Vercel settings:
+
+- Framework preset: Vite
+- Build command: `npm run build`
+- Output directory: `dist`
+- Install command: `npm install`
+
+Recommended Netlify settings:
+
+- Build command: `npm run build`
+- Publish directory: `dist`
+
+After deployment, add your production domain to Firebase Authentication authorized domains in the Firebase console. Users enter their own Gemini API key in the app, so no Gemini server environment variable is required for the current implementation.

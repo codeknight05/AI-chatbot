@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import {
   collection,
   addDoc,
-  orderBy,
   query,
   onSnapshot,
   where,
@@ -67,18 +66,20 @@ Just let me know what you're working on, and I'll do my best to help!`,
 
     initializeChat();
 
-    const q = query(
-      collection(db, "messages"),
-      where("userId", "==", user.uid),
-      orderBy("timestamp", "asc")
-    );
+    const q = query(collection(db, "messages"), where("userId", "==", user.uid));
 
     const unsubscribe = onSnapshot(q, {
       next: (snapshot) => {
-        const messageData = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
+        const messageData = snapshot.docs
+          .map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }))
+          .sort((a, b) => {
+            const aTime = a.timestamp?.toMillis?.() ?? 0;
+            const bTime = b.timestamp?.toMillis?.() ?? 0;
+            return aTime - bTime;
+          });
         setMessages(messageData);
         setIndexReady(true);
       },
